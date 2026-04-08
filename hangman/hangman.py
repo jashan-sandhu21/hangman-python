@@ -1,4 +1,5 @@
 import random
+import 
 stages = [r"""  
   +---+
   |   |
@@ -50,7 +51,6 @@ stages = [r"""
       |
 ========="""]
 end_of_game = False
-word_list = ["ardvark", "baboon", "camel"]
 chosen_word = random.choice(word_list)
 print(f"the solution is {chosen_word}")
 display = []
