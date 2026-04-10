@@ -1,78 +1,28 @@
 import random
-import 
-stages = [r"""  
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========''','''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========''','''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========''','''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''','''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========''','''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-========="""]
-end_of_game = False
+from hangman_words import word_list
+from hangman_art import stages
+
 chosen_word = random.choice(word_list)
-print(f"the solution is {chosen_word}")
-display = []
 word_length = len(chosen_word)
 lives = 6
+display = []
 for _ in range(word_length):
     display += "_"
 print(display)
+end_of_game = False
 while not end_of_game:
-    guess = input("Guess letter: ").lower()
+    guess = input("Guess a letter: ")
     for position in range(word_length):
         letter = chosen_word[position]
-        if letter == guess:
-            display[position]= letter
+        if letter == guess :
+            display[position] = letter
     if guess not in chosen_word:
         lives -= 1
         if lives == 0:
-            end_of_game = True
-            print("You Lose !!!")
-    print(display)
-    print(stages[lives])
+            end_of_game = True 
+            print("You lose")
+    print(f"{''.join(display)}")
     if "_" not in display:
         end_of_game = True
-        print("You Win!!")
-    
+        print("You win!")
+    print(stages[lives])
